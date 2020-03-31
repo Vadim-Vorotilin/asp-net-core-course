@@ -30,10 +30,10 @@ namespace Lection7
                     !dict.ContainsKey("score"))
                     throw new ValidationException("Name or score not provided");
                 
-                var student = new Student { Name = dict["name"], Score = int.Parse(dict["score"]) };
+                var student = new StudentEntity { Name = dict["name"], Score = int.Parse(dict["score"]) };
                 
                 if (dict.ContainsKey("teacherName"))
-                    student.Teacher = new Teacher
+                    student.Teacher = new TeacherEntity
                     {
                         Name = dict["teacherName"],
                         Discipline = dict.ContainsKey("discipline") ? dict["discipline"] : null
