@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Lection7.Entities;
 using Microsoft.AspNetCore.Http;
 
 namespace Lection7
@@ -32,12 +33,12 @@ namespace Lection7
                 
                 var student = new StudentEntity { Name = dict["name"], Score = int.Parse(dict["score"]) };
                 
-                if (dict.ContainsKey("teacherName"))
-                    student.Teacher = new TeacherEntity
-                    {
-                        Name = dict["teacherName"],
-                        Discipline = dict.ContainsKey("discipline") ? dict["discipline"] : null
-                    };
+                // if (dict.ContainsKey("teacherName"))
+                //     student.Teacher = new TeacherEntity
+                //     {
+                //         Name = dict["teacherName"],
+                //         Discipline = dict.ContainsKey("discipline") ? dict["discipline"] : null
+                //     };
 
                 var entity = dbContext.Students.Add(student);
 

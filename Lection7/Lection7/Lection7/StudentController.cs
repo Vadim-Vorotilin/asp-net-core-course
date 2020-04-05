@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Lection7.Entities;
 using Lection7.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +54,7 @@ namespace Lection7
                     return NotFound();
             }
 
-            var entity = _dbContext.Students.Add(new StudentEntity { Name = model.Name, Score = model.Score, Teacher = teacher });
+            var entity = _dbContext.Students.Add(new StudentEntity { Name = model.Name, Score = model.Score });//, Teacher = teacher });
 
             await _dbContext.SaveChangesAsync();
             
