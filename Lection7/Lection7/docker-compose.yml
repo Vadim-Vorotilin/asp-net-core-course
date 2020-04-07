@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+    gateway:
+        container_name: gateway
+        image: gateway:latest
+        build: Gateway/
+        ports:
+            - "8080:80"
+
+    students-api:
+        container_name: students-api
+        image: students-api:latest
+        build: StudentsApi/
+        links:
+            - "students-db"
+        depends_on: 
+            - students-db
+
+    students-db:
+        container_name: students-db
+        image: postgres:latest
+        environment: 
+            - POSTGRES_PASSWORD=123
+            - POSTGRES_DB=students
